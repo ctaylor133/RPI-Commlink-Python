@@ -1,9 +1,3 @@
-## Soundboard.py
-
-##A Raspberry Pi touchscreen soundboard built with Python, providing instant playback of customizable audio effects through an intuitive fullscreen interface
-
-
-
 #!/usr/bin/env python3
 import os
 import subprocess
@@ -19,6 +13,7 @@ os.putenv('SDL_MOUSEDEV', '/dev/input/event0')
 ICON_DIR = "/home/cameron/icons"
 SOUND_DIR = "/home/cameron/sounds"
 PODCAST_SCRIPT = "/home/cameron/audio/podcast.py"
+COMMLINK_SCRIPT = "/home/cameron/RPM-Commlink/commlink.py"
 
 MAP_IMAGE = "/home/cameron/Pictures/Las-Vegas-Map-Feature.jpg"
 
@@ -73,6 +68,10 @@ class SoundBoard:
         subprocess.Popen(["python3", PODCAST_SCRIPT])
         self.exit_app()
 
+    def launch_commlink(self):
+        self.root.destroy()
+        subprocess.Popen(["python3", COMMLINK_SCRIPT])
+
     def exit_app(self):
         self.root.attributes("-fullscreen", False)
         self.root.destroy()
@@ -89,7 +88,13 @@ class SoundBoard:
             photo = ImageTk.PhotoImage(img)
             self.images.append(photo)
 
-            cmd = self.launch_map if icon == "map.png" else lambda s=sound: self.play_sound(s)
+            #cmd = self.launch_map if icon == "map.png" else lambda s=sound: self.play_sound(s)
+            if icon == "map.png":
+                cmd = self.launch_map
+            elif icon == "pawpatrol.png":
+                cmd = self.launch_commlink
+            else:
+                cmd = lambda s=sound: self.play_sound(s) 
 
             btn = tk.Button(frame, image=photo, bg="green", borderwidth=0,
                             width=ICON_SIZE, height=ICON_SIZE,

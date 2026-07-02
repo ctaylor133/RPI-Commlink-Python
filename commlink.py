@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-=======
-## Main CommLink HUD display 
-
->>>>>>> 53294822e394c5fe7a3dcec96f415d269e9d9f32
 import tkinter as tk
 from PIL import Image, ImageTk, ImageEnhance
 import pygame
@@ -67,13 +62,10 @@ class CommlinkV4Clean:
         self.overlay_id = None
 
         self.load_background()
-<<<<<<< HEAD
         
         # Get screen size parameters for right side placements
         screen_w = self.root.winfo_screenwidth()
         screen_h = self.root.winfo_screenheight()
-=======
->>>>>>> 53294822e394c5fe7a3dcec96f415d269e9d9f32
 
         # -----------------------------
         # STATUS BAR
@@ -84,20 +76,12 @@ class CommlinkV4Clean:
         self.status_label = tk.Label(
             root,
             textvariable=self.status_var,
-<<<<<<< HEAD
-            font=("Courier", 10, "bold"),
+            font=("Courier", 11, "bold"),
             fg="#00ff9c",
             bg="black"
         )
         # Position matching the upper left area of the UI card
         self.canvas.create_window(50, 50, anchor="nw", window=self.status_label)
-=======
-            font=("Courier", 16, "bold"),
-            fg="#00ff9c",
-            bg="black"
-        )
-        self.canvas.create_window(20, 20, anchor="nw", window=self.status_label)
->>>>>>> 53294822e394c5fe7a3dcec96f415d269e9d9f32
 
         # -----------------------------
         # BOOT SEQUENCE
@@ -117,7 +101,6 @@ class CommlinkV4Clean:
         # -----------------------------
         self.create_bottom_buttons()
 
-<<<<<<< HEAD
         # -----------------------------
         # TERMINATE LINK BUTTON (RIGHT SIDE ALIGNED)
         # -----------------------------
@@ -137,18 +120,6 @@ class CommlinkV4Clean:
         )
         # Moves layout element to the right side of the screen matching your reference drawing
         self.canvas.create_window(screen_w - 60, 150, anchor="nw", window=exit_btn)
-=======
-        # EXIT BUTTON
-        exit_btn = tk.Button(
-            root,
-            text="TERMINATE LINK",
-            font=("Courier", 12, "bold"),
-            bg="red",
-            fg="white",
-            command=self.exit_system
-        )
-        self.canvas.create_window(120, 80, anchor="nw", window=exit_btn)
->>>>>>> 53294822e394c5fe7a3dcec96f415d269e9d9f32
 
         # -----------------------------
         # THREADS
@@ -206,11 +177,7 @@ class CommlinkV4Clean:
         screen_h = self.root.winfo_screenheight()
 
         frame = tk.Frame(self.root, bg="black")
-<<<<<<< HEAD
         self.canvas.create_window(screen_w // 2, screen_h - 80, window=frame)
-=======
-        self.canvas.create_window(screen_w // 2, screen_h - 60, window=frame)
->>>>>>> 53294822e394c5fe7a3dcec96f415d269e9d9f32
 
         for i in range(6):
             btn = tk.Button(
@@ -224,11 +191,7 @@ class CommlinkV4Clean:
                 width=10,
                 command=lambda i=i: self.channel_action(i)
             )
-<<<<<<< HEAD
             btn.pack(side="left", padx=12)
-=======
-            btn.pack(side="left", padx=8)
->>>>>>> 53294822e394c5fe7a3dcec96f415d269e9d9f32
             self.buttons.append(btn)
 
     # -----------------------------
@@ -251,11 +214,7 @@ class CommlinkV4Clean:
             self.root.winfo_height() // 2,
             text=text,
             fill="#00ff9c",
-<<<<<<< HEAD
-            font=("Courier", 16, "bold")
-=======
-            font=("Courier", 26, "bold")
->>>>>>> 53294822e394c5fe7a3dcec96f415d269e9d9f32
+            font=("Courier", 10, "bold")
         )
 
         self.root.after(1000, self.clear_overlay)
@@ -302,7 +261,4 @@ if __name__ == "__main__":
     root = tk.Tk()
     app = CommlinkV4Clean(root)
     root.mainloop()
-<<<<<<< HEAD
 
-=======
->>>>>>> 53294822e394c5fe7a3dcec96f415d269e9d9f32
