@@ -13,7 +13,7 @@ import time
 BASE_PATH = "/home/cameron"
 
 BG_IMAGE_PATH = "/home/cameron/icons/commlink.png"
-SOUND_PATH = os.path.join(BASE_PATH, "sounds", "laser-gun-81720.mp3")
+SOUND_PATH = os.path.join(BASE_PATH, "sounds", "target.mp3")
 SOUNDBOARD_PATH = os.path.join(BASE_PATH, "soundboard.py")
 
 STATUS_STREAM = [
@@ -37,12 +37,15 @@ INCOMING_PRIORITY = [
 # -----------------------------
 pygame.mixer.init()
 
+SOUND_VOLUME = 0.10   #% volume
+
 def play_sound():
     try:
         pygame.mixer.music.load(SOUND_PATH)
+        pygame.mixer.music.set_volume(SOUND_VOLUME)
         pygame.mixer.music.play()
-    except:
-        pass
+    except Exception as e:
+        print(e)
 
 
 # -----------------------------
